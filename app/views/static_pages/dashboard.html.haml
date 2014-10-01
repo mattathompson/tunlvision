@@ -1,1 +1,28 @@
-%h1 this is the dashboard
+.page-header
+  %h1
+    Dashboard
+    %small= current_user.name
+
+- if !@projects.empty?
+  %h3 Projects
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Title
+        %th Client
+        %th Description
+        %th Deadline
+        %th Status
+    %tbody
+      %tr
+        - @projects.each do |p|
+          .project
+            %td= p.title
+            %td= p.client
+            %td= p.description.truncate(100)
+            %td= p.deadline
+            -if p.active?
+              %td Active
+            -else
+              %td Finished
+              

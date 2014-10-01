@@ -31,6 +31,7 @@ gem 'stripe'
 
 gem 'sidekiq'
 gem 'sinatra'
+gem "erb2haml", :group => :development
 
 group :development do
   gem 'annotate'

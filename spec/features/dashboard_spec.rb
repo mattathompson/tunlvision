@@ -7,12 +7,22 @@ feature 'dashboard' do
     login @user
   end
 
-  it "displays all projects" do
+  focus "displays all projects" do
+    project = build :project
+    @user.projects << project
     visit root_path
-    expect( page ).to have_content("Stories")
+    expect( page ).to have_content(project.title)
   end
 
-  it "list shows whether a project is active or not"
+  it "list shows whether a project is active or inactive" do
+    project = build :product, :active
+
+    visit root_path
+    within('.projects') { expect( page ).to have_content("Active") }
+
+
+  end
+
   it "It shows current users name"
 
 end

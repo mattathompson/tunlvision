@@ -6,4 +6,8 @@ FactoryGirl.define do
     client      { Faker::Company.name }
     user        { create :user }
   end
+
+  trait :completed do
+    active false
+  end
 end
