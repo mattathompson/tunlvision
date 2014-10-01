@@ -2,10 +2,29 @@
 %html
   %head
     %title CreativeStory
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
+    %nav.navbar.navbar-default{:role => "navagation"}
+      .container-fluid
+        .navbar-header
+          %button{:type => "button", :class => "navbar-toggle collapsed", "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a= link_to "Creative Story", root_path, class: "navbar-brand"
+
+        .collapse.navbar-collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li
+              %a{:href => "#"}Link
+            %li
+              %a{:href => "#"}Link
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              =link_to "Sign In", new_user_session_path
 
     .container
       .flash
@@ -15,5 +34,5 @@
             %div{ :id => "flash_#{flash_class name}" }
               = msg
 
-
+  .container
     = yield
