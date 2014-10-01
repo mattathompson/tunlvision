@@ -2,7 +2,7 @@
   .col-md-6.col-md-offset-3
     %h2 Sign in
     %br
-    =form_for(resource, as: resource_name, url: session_path(resource_name), class: "form") do |f|
+    =form_for(resource, as: resource_name, url: session_path(resource_name), class: "form", id: "new_user") do |f|
       .form-group
         =f.label :email, class: "control-label"
         =f.email_field :email, class: "form-control"
@@ -13,7 +13,7 @@
         .form-group
           =f.check_box :remember_me
           =f.label :remember_me, class: "control-label"
-      =f.submit "Log in", class: "btn btn-default"
+      =f.submit "Sign in", class: "btn btn-default"
     %br
 
     =render 'devise/shared/links'
