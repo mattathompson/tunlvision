@@ -1,0 +1,25 @@
+.row
+  .col-md-8.col-md-offset-2
+    %br
+    %br
+    %h1 Create Project
+    %br
+    %br
+
+    = form_for(@project) do |f|
+      .form-group
+        = f.label :title
+        = f.text_field :title, class: "form-control"
+      .form-group
+        = f.label :client
+        = f.text_field :client, class: "form-control"
+      .form-group
+        = f.label :description
+        = f.text_area :description, rows: "6", class: "form-control"
+      .form-group
+        = f.label :deadline
+        = f.date_select :deadline, :order => [:month, :day, :year]
+
+      = f.submit "Create Project", class: "btn btn-default"
+      %br
+      %br

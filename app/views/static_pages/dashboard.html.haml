@@ -2,7 +2,7 @@
   %h1
     Dashboard
     %small= current_user.name
-
+    %small.pull-right= link_to "Create Project", new_project_path, id: "new-project"
 - if !@projects.empty?
   %h3 Projects
   %table.table.table-striped
@@ -17,7 +17,8 @@
       %tr
         - @projects.each do |p|
           .project
-            %td= p.title
+            %td
+              = link_to p.title, project_path(p)
             %td= p.client
             %td= p.description.truncate(100)
             %td= p.deadline
@@ -25,4 +26,3 @@
               %td Active
             -else
               %td Finished
-              
