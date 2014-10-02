@@ -28,7 +28,7 @@ feature 'creating products' do
       visit project_path(project1)
     end
 
-    focus "allows you to edit an existing project" do
+    it "allows you to edit an existing project" do
       click_link('Edit')
       project2 = build :project
 
@@ -38,8 +38,18 @@ feature 'creating products' do
       click_button('Update Project')
       expect( page ).to have_content("Project Successfully updated!")
     end
-
-
-
   end
+
+  context "Remove Project" do
+    before :each do
+      @project = build :project
+      @user.projects << @project
+    end
+
+    it "allow you to delete a project" do
+        visit project_path(@project)
+        click_link('Delete')
+    end
+  end
+
 end
