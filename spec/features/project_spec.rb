@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'creating products' do
+feature 'working with projects' do
 
   before :each do
     @user = create :user
