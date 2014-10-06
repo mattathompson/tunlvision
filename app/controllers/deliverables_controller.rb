@@ -38,7 +38,12 @@ class DeliverablesController < ApplicationController
   end
 
   def destroy
-
+    @deliverable = @project.deliverables.find params[:id]
+    if @deliverable.destroy!
+      redirect_to @project, :flash => {:success => "You have successfully deleted"}
+    else
+      redirect_to :back, :flash => {:failure => "Something went wrong."}
+    end
   end
 
 

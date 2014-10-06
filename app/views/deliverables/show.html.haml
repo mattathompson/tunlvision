@@ -2,4 +2,6 @@
   %h1
     Deliverable
     %small= @deliverable.title
-    %small{:class => "pull-right"}= link_to "Edit", edit_project_deliverable_path(@deliverable.project_id, @deliverable)
+    %small{:class => "pull-right"}= link_to " Edit", edit_project_deliverable_path(@deliverable.project_id, @deliverable)
+    %small{:class => "pull-right"}= "|"
+    %small{:class => "pull-right"}= link_to "Delete ", project_deliverable_path(@deliverable.project_id, @deliverable), method: :delete
