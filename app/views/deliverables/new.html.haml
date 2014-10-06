@@ -6,7 +6,7 @@
     %br
     %br
 
-    = form_for(@deliverable) do |f|
+    = form_for([@project, @deliverable]) do |f|
       .form-group
         = f.label :title
         = f.text_field :title, class: "form-control"

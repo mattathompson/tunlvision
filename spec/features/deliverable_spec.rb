@@ -12,7 +12,6 @@ feature 'Deliverables' do
   context "can be Created" do
 
     before :each do
-      binding.pry
       visit project_path(@project)
       @deliverable = build :deliverable
     end
@@ -22,9 +21,11 @@ feature 'Deliverables' do
       expect( page ).to have_content("Create Deliverable")
 
       %w(Title Description).each do |value|
-        fill_in(value, :with => deliverable[:"#{value.downcase}"])
+        fill_in(value, :with => @deliverable[:"#{value.downcase}"])
       end
+      save_and_open_page
       click_button('Create Deliverable')
+      expect( page ).to have_content("Created new deliverable")
     end
   end
 end
