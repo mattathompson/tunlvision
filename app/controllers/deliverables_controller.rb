@@ -15,8 +15,8 @@ class DeliverablesController < ApplicationController
 
 
   def create
-    @deliverable = @project.deliverables.new create_params
-    if @deliverable.save
+    @deliverable = @project.deliverables.new
+    if @deliverable.save create_params
       redirect_to [@project, @deliverable], :flash => {:success => "Created new deliverable for #{@project.title}!"}
     else
       redirect_to :back, :flash => {:failure => "Something went wrong :("}
@@ -25,11 +25,16 @@ class DeliverablesController < ApplicationController
 
 
   def edit
-
+    @deliverable = @project.deliverables.find params[:id]
   end
 
   def update
-
+    @deliverable = @project.deliverables.find params[:id]
+    if @deliverable.update_attributes create_params
+      redirect_to [@project, @deliverable], :flash => {:success => "Deliverable was Successfully updated!"}
+    else
+      redirect_to :back, :flash => {:failure => "Something went wrong :("}
+    end
   end
 
   def destroy

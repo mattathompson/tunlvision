@@ -7,3 +7,14 @@
       %small= link_to "Delete", project_path(@project), method: :delete
 
 =link_to "Add Deliverable", new_project_deliverable_path(@project)
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Deliverable
+      %th Timebox
+  %tbody
+    -@project.deliverables.each do |deliverable|
+      %tr
+        %td= link_to deliverable.title, project_deliverable_path(@project, deliverable)
+        %td= deliverable.timebox
