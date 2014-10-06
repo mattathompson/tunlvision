@@ -12,7 +12,7 @@ feature 'working with projects' do
       visit new_project_path
     end
 
-    it "can create projects" do
+    focus "can create projects" do
       project = build :project
       %w(Title Client Description).each do |value|
         fill_in(value, :with => project[:"#{value.downcase}"])

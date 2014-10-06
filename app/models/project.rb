@@ -4,6 +4,11 @@ class Project < ActiveRecord::Base
   has_many :deliverables
 
 
+  def upcomming_deadlines
+    self.where(deadline: (Time.now..(Time.now + 1.year)))
+  end
+
+
 
 
 end

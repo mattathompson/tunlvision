@@ -21,7 +21,7 @@
               = link_to p.title, project_path(p)
             %td= p.client
             %td= p.description.truncate(20)
-            %td= p.deadline
+            %td= p.deadline.strftime("%Y-%m-%d")
             -if p.active?
               %td Active
             -else
