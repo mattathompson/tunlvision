@@ -7,31 +7,24 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'haml-rails'
-
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'pg'
 gem 'pg_search'
-
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
-
-
 gem 'devise'
 gem 'devise-async'
 gem 'cancancan'
-
 gem 'angularjs-rails'
-
 gem 'figaro'
-
-gem 'stripe'
-
+gem 'kaminari'
 gem 'sidekiq'
 gem 'sinatra'
-gem "erb2haml", :group => :development
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 
 group :development do
   gem 'annotate'
