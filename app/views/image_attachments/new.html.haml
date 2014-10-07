@@ -1,0 +1,14 @@
+.row
+  .col-md-8.col-md-offset-2
+    %br
+    %br
+    %h1 Add Inspiration
+    %br
+    %br
+
+    =form_for([@project, @deliverable, @image_attachment]) do |f|
+
+      .form-group
+        = f.file_field :image
+
+      = f.submit "Submit Image", class: "btn btn-default"

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'static_pages#dashboard'
 
   resources :projects, except: [:index] do
-    resources :deliverables
+    resources :deliverables do
+      resources :image_attachments
+    end
   end
 
 
