@@ -1,29 +1,23 @@
-.row
-  .col-md-8.col-md-offset-2
-    %br
-    %br
-    %h1 Create Project
-    %br
-    %br
+.form-column
+  %br
+  %br
+  %h1 Create Project
+  %br
+  %br
+  = form_for(@project) do |f|
 
-    = form_for(@project) do |f|
-      .form-group
-        = f.label :title
-        = f.text_field :title, class: "form-control"
-      .form-group
-        = f.label :client
-        = f.text_field :client, class: "form-control"
-      .form-group
-        = f.label :description
-        = f.text_area :description, rows: "6", class: "form-control"
-      .form-group.col-md-3
-        = f.label :deadline
-        = f.date_field :deadline, :order => [:month, :day, :year], class: "form-control"
-      %br
-      %br
-      %br
-      %br
-      %br
-      = f.submit "Create Project"
-      %br
-      %br
+    = f.label :title
+    = f.text_field :title
+
+    = f.label :client
+    = f.text_field :client
+
+    = f.label :description
+    = f.text_area :description, rows: "6"
+    .date-field
+      = f.label :deadline
+      = f.date_field :deadline, :order => [:month, :day, :year]
+
+    = f.submit "Create Project"
+    %br
+    %br

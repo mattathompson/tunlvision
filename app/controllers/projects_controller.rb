@@ -9,6 +9,10 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new
   end
 
+  def info
+    @project = current_user.projects.find params[:id]
+  end
+
   def create
     @project = current_user.projects.new create_params
     if @project.save!

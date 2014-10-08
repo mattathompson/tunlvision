@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007192938) do
+ActiveRecord::Schema.define(version: 20141008224443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141007192938) do
     t.text     "description"
     t.datetime "timebox"
     t.integer  "project_id"
+    t.boolean  "completed",   default: false
   end
 
   create_table "image_attachments", force: true do |t|
@@ -39,7 +40,10 @@ ActiveRecord::Schema.define(version: 20141007192938) do
     t.text     "description"
     t.datetime "deadline"
     t.integer  "user_id"
-    t.boolean  "active",      default: true
+    t.boolean  "active",             default: true
+    t.text     "client_description"
+    t.string   "client_website_url"
+    t.string   "client_email"
   end
 
   create_table "users", force: true do |t|

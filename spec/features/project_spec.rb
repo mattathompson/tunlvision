@@ -21,7 +21,7 @@ feature 'working with projects' do
     end
   end
 
-  context "Edit Project" do
+  focus "Edit Project" do
     before :each do
       project1 = build :project
       @user.projects << project1

@@ -28,6 +28,11 @@ class Project < ActiveRecord::Base
     order(:deadline).page params[:page]
   end
 
+  def ratio
+    completed = deliverables.select{|d| d.completed}
+    "#{completed.length} / #{deliverables.length}"
+  end
+
   def self.text_search(query)
     if query.present?
       search(query)

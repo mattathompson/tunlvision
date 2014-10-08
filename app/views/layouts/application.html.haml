@@ -15,21 +15,19 @@
           %ul#navigation-menu
             %li.nav-link
               %a{:href => "#{root_path}"} Projects
-            %li.nav-link
-              %a{:href => "javascript:void(0)"} About Us
-            %li.nav-link
-              %a{:href => "javascript:void(0)"} Contact
             -if !@project
               %li.nav-link
-                %a{:href => "#{new_project_path}"} New Project
-            -if @project
+                =link_to "New Project", new_project_path
+            -if @project && !@project.title.nil?
               %li.nav-link.more
                 %a{:href => "javascript:void(0)"} Project Options
                 %ul.submenu
                   %li
-                    %a{:href => "javascript:void(0)"} Submenu Item
+                    %a{:href => "#{project_info_path(id: @project.id)}"} Project Specifics
                   %li
-                    %a{:href => "javascript:void(0)"} Another Item
+                    %a{:href => "#{new_project_deliverable_path(@project)}"} New Objective
+                  %li
+                    %a{:href => ""} Add Inspiration
                   %li.more
                     %a{:href => "javascript:void(0)"} Item with submenu
                     %ul.submenu
@@ -61,16 +59,16 @@
 
 
 
+    .wrapper-for-content-outside-of-footer
 
-    .container
-      .flash
-        - flash.each do |name, msg|
-          %div{ :class => "alert alert-#{flash_class name}" }
-            %a.close{ "data-dismiss" => "alert" } &times;
-            %div{ :id => "flash_#{flash_class name}" }
-              = msg
-    .container
-      .wrapper-for-content-outside-of-footer
+      .container
+        .flash
+          - flash.each do |name, msg|
+            %div{ :class => "alert alert-#{flash_class name}" }
+              %a.close{ "data-dismiss" => "alert" } &times;
+              %div{ :id => "flash_#{flash_class name}" }
+                = msg
+      .container
 
         = yield
 

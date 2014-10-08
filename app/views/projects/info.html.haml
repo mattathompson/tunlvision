@@ -1,0 +1,19 @@
+%head
+  %link{:href => "http://fonts.googleapis.com/css?family=Questrial", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Sanchez:400italic,400", :rel => "stylesheet", :type => "text/css"}
+%article.type-system-geometric
+  %p.type= "Project Deadline:  #{@project.deadline.strftime("%Y-%m-%d")}"
+  %h1= @project.client
+  %h2
+    =@project.client_description
+
+  %h2
+    %strong= @project.title
+  %p
+    = @project.description
+  %h3 Subheading lorem
+  %p
+    %span Consequatur ullam, voluptatum
+    incidunt neque porro numquam doloremque vel inventore distinctio laudantium harum illo quam nulla dolor alias iure impedit. Accusamus. Consequatur, a, ullam, voluptatum incidunt neque porro numquam doloremque vel inventore distinctio laudantium harum illo quam nulla dolor alias iure impedit! Accusamus.
+  %hr
+    %p.author Author Name
