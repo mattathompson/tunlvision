@@ -15,7 +15,7 @@
         = f.text_area :description, rows: "6", class: "form-control"
       .form-group
         = f.label :timebox
-        = f.date_select :timebox, :order => [:month, :day, :year]
+        = f.date_field :timebox, :order => [:month, :day, :year], class: "form-control"
 
       = f.submit "Update Deliverable", class: "btn btn-default"
       %br

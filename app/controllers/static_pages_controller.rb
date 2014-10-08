@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def dashboard
-    @projects = current_user.projects.order(:deadline).page params[:page]
+    @projects = current_user.projects.text_search(params[:query]).ordered(params)
   end
 
   def help

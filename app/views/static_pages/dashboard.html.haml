@@ -1,43 +1,27 @@
-.page-header
-  %h1
-    Dashboard
-    %small= current_user.name
-    %small.pull-right= link_to "Create Project", new_project_path, id: "new-project"
 - if !@projects.empty?
-
-  %row
-    .col-md-6.col-md-offset-4
-      = paginate @projects
-    .cards
-      -@projects.each do |project|
-        .card
-          .card-image
+  .cards
+    -@projects.each do |project|
+      .card
+        .card-image
+          -if project.has_main_image?
+            = image_tag project.main_image
+          -else
             %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}
-          .card-header
-            =link_to project.title, project_path(project)
-          .card-copy
-            = project.description.truncate(150)
-          .card-stats
-            %ul
-              %li
-                = project.deadline.strftime("%Y-%m-%d")
-                %span Deadline
-              %li
-                -if project.active?
-                  Active
-                -else
-                  Finished
-                %span Status
-              %li
-                = project.deliverables.count
-                %span Objectives
-- else
-  .intro-text
-    %h3 Topic Label
-    %h2 Intro Text Heading
-    %h4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta rerum libero iste saepe.
-    %p
-      Lorem ipsum dolor sit amet, consectetur consectetur adipisicing elit. Perferendis para mitis eun non ullam atque debitis, illo adipisicing elit. Perferendis para mitis eun non ullam atque debitis, illo. Amet, consectetur adipisicing.
-      %a{:href => ""}
-        Read more
-        %span »
+        .card-header
+          =link_to project.title, project_path(project)
+        .card-copy
+          = project.description.truncate(150)
+        .card-stats
+          %ul
+            %li
+              = project.deadline.strftime("%Y-%m-%d")
+              %span Deadline
+            %li
+              -if project.active?
+                Active
+              -else
+                Finished
+              %span Status
+            %li.tooltip-item
+              = project.deliverables.count
+              %span Objectives

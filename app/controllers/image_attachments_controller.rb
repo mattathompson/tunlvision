@@ -19,7 +19,7 @@ class ImageAttachmentsController < ApplicationController
   def create
     @image_attachment = @deliverable.image_attachments.new create_params
     if @image_attachment.save!
-      redirect_to @project, :flash => {:success => "The Image was successfully added"}
+      redirect_to [@project, @deliverable, @image_attachment], :flash => {:success => "The Image was successfully added"}
     else
       redirect_to :back, :flash => {:failure => "Something went wrong :("}
     end

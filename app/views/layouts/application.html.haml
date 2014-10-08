@@ -6,28 +6,61 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default{:role => "navagation"}
-      .container-fluid
-        .navbar-header
-          %button{:type => "button", :class => "navbar-toggle collapsed", "data-toggle" => "collapse", "data-target" => ".navbar-collapse"}
-            %span.sr-only Toggle Navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a= link_to "Creative Story", root_path, class: "navbar-brand"
+    %header.navigation
+      .navigation-wrapper
+        %a.logo{:href => "#{root_path}"}
+          %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+        %a#js-mobile-menu.navigation-menu-button{:href => ""} MENU
+        .nav
+          %ul#navigation-menu
+            %li.nav-link
+              %a{:href => "#{root_path}"} Projects
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} About Us
+            %li.nav-link
+              %a{:href => "javascript:void(0)"} Contact
+            -if !@project
+              %li.nav-link
+                %a{:href => "#{new_project_path}"} New Project
+            -if @project
+              %li.nav-link.more
+                %a{:href => "javascript:void(0)"} Project Options
+                %ul.submenu
+                  %li
+                    %a{:href => "javascript:void(0)"} Submenu Item
+                  %li
+                    %a{:href => "javascript:void(0)"} Another Item
+                  %li.more
+                    %a{:href => "javascript:void(0)"} Item with submenu
+                    %ul.submenu
+                      %li
+                        %a{:href => "javascript:void(0)"} Sub-submenu Item
+                      %li
+                        %a{:href => "javascript:void(0)"} Another Item
+                  %li.more
+                    %a{:href => "javascript:void(0)"} Another submenu
+                    %ul.submenu
+                      %li
+                        %a{:href => "javascript:void(0)"} Sub-submenu
+                      %li
+                        %a{:href => "javascript:void(0)"} An Item
+        .navigation-tools
+          .search-bar
+            .search-and-submit
+              %form{:action => "/", :method => "get"}
+                %input{:placeholder => "Search Project", :name => "query", :type => "search"}/
+                %button{:type => "submit"}
+                  %img{:alt => "Search Icon", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png"}
+          -if current_user
+            = link_to "Sign Out", destroy_user_session_path, class: "sign-up", method: :delete
+          -else
+            = link_to "Sign In", new_user_session_path, class: "sign-up"
 
-        .collapse.navbar-collapse.navbar-collapse
-          %ul.nav.navbar-nav
-            %li
-              %a{:href => "#"}Link
-            %li
-              %a{:href => "#"}Link
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              -if current_user
-                =link_to "Sign Out", destroy_user_session_path, method: :delete
-              -else
-                =link_to "Sign In", new_user_session_path
+
+
+
+
+
 
     .container
       .flash
@@ -36,9 +69,38 @@
             %a.close{ "data-dismiss" => "alert" } &times;
             %div{ :id => "flash_#{flash_class name}" }
               = msg
-
     .container
-      = yield
+      .wrapper-for-content-outside-of-footer
+
+        = yield
 
 
-    
+
+    .push
+
+%footer.footer-2
+  .footer-logo
+    %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+  %ul
+    %li
+      %a{:href => "javascript:void(0)"} About
+    %li
+      %a{:href => "javascript:void(0)"} Contact
+    %li
+      %a{:href => "javascript:void(0)"} Products
+  .footer-secondary-links
+    %ul
+      %li
+        %a{:href => "javascript:void(0)"} Terms and Conditions
+      %li
+        %a{:href => "javascript:void(0)"} Privacy Policy
+    %ul.footer-social
+      %li
+        %a{:href => "javascript:void(0)"}
+          %img{:alt => "Facebook", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/facebook-logo-circle.png"}
+      %li
+        %a{:href => "javascript:void(0)"}
+          %img{:alt => "Twitter", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/twitter-logo-circle.png"}
+      %li
+        %a{:href => "javascript:void(0)"}
+          %img{:alt => "YouTube", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/youtube-logo-circle.png"}

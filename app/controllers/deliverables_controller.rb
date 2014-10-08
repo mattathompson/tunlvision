@@ -15,8 +15,8 @@ class DeliverablesController < ApplicationController
 
 
   def create
-    @deliverable = @project.deliverables.new
-    if @deliverable.save create_params
+    @deliverable = @project.deliverables.new create_params
+    if @deliverable.save
       redirect_to [@project, @deliverable], :flash => {:success => "Created new deliverable for #{@project.title}!"}
     else
       redirect_to :back, :flash => {:failure => "Something went wrong :("}
