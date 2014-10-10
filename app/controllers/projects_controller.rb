@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
-
+  before_action :find_project, only: [:show, :info, :inspiration, :destroy, :edit, :update]
 
   def show
-    @project = current_user.projects.find params[:id]
+
   end
 
   def new
@@ -10,7 +10,11 @@ class ProjectsController < ApplicationController
   end
 
   def info
-    @project = current_user.projects.find params[:id]
+
+  end
+
+  def inspiration
+
   end
 
   def create
@@ -23,11 +27,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = current_user.projects.find params[:id]
+
   end
 
   def update
-    @project = current_user.projects.find params[:id]
+
     if @project.update_attributes! create_params
       redirect_to @project, :flash => {:success => "Project Successfully updated!"}
     else
@@ -36,7 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = current_user.projects.find params[:id]
+
     if @project.destroy!
       redirect_to root_path, :flash => {:success => "#{@project.title} was successfully removed!"}
     else
@@ -49,6 +53,10 @@ class ProjectsController < ApplicationController
 
   def create_params
     params.require(:project).permit(:title, :client, :description, :deadline)
+  end
+
+  def find_project
+    @project = current_user.projects.find params[:id]
   end
 
 end

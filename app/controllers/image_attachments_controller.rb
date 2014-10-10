@@ -1,5 +1,5 @@
 class ImageAttachmentsController < ApplicationController
-  before_action :find_project, :find_deliverable
+  before_action :find_project
 
   def index
 
@@ -7,17 +7,17 @@ class ImageAttachmentsController < ApplicationController
 
 
   def show
-    @image_attachment = @deliverable.image_attachments.find params[:id]
+    @image_attachment = @project.image_attachments.find params[:id]
   end
 
 
   def new
-    @image_attachment = @deliverable.image_attachments.new
+    @image_attachment = @project.image_attachments.new
   end
 
 
   def create
-    @image_attachment = @deliverable.image_attachments.new create_params
+    @image_attachment = @project.image_attachments.new create_params
     if @image_attachment.save!
       redirect_to [@project, @deliverable, @image_attachment], :flash => {:success => "The Image was successfully added"}
     else
@@ -48,10 +48,6 @@ class ImageAttachmentsController < ApplicationController
     @project = current_user.projects.find params[:project_id]
   end
 
-  def find_deliverable
-    deliverables = @project.deliverables.find params[:deliverable_id]
-    @deliverable = deliverables
-  end
 
   def create_params
     params.require(:image_attachment).permit(:image)

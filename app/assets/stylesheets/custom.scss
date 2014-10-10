@@ -3,6 +3,14 @@ body {
 
 }
 
+.inspiration-column {
+  @include span-columns(5);
+}
+
+.float-right{
+  @include shift(10);
+}
+
 .form-column {
   @include span-columns(6);
   @include shift(3);
@@ -475,7 +483,7 @@ $sliding-menu-color-hover: #fff;
       font-size: 1.7em;
       line-height: 1.35em;
       margin: 0 auto 1em;
-      width: $intro-text-width;
+      width: 80%;
     }
   }
 

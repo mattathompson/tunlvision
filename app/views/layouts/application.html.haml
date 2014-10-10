@@ -26,8 +26,13 @@
                     %a{:href => "#{project_info_path(id: @project.id)}"} Project Specifics
                   %li
                     %a{:href => "#{new_project_deliverable_path(@project)}"} New Objective
-                  %li
-                    %a{:href => ""} Add Inspiration
+                  %li.more
+                    %a{:href => "javascript:void(0)"} Add Inspiration
+                    %ul.submenu
+                      %li
+                        %a{:href => "#{new_project_image_attachment_path(@project)}"} Image
+                      %li
+                        %a{:href => ""} Embed Video
                   %li.more
                     %a{:href => "javascript:void(0)"} Item with submenu
                     %ul.submenu
