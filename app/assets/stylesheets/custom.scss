@@ -1,11 +1,20 @@
 body {
     margin: 0px;
+}
+
+.full-width {
+  @include span-columns(12);
+
 
 }
 
 .inspiration-column {
-  @include span-columns(5);
+
+  @include span-columns(6);
+  @include omega(2n);
+
 }
+
 
 .float-right{
   @include shift(10);
@@ -14,6 +23,10 @@ body {
 .form-column {
   @include span-columns(6);
   @include shift(3);
+
+  h1 {
+    text-align: center;
+  }
 
   .date-field {
     @include span-columns(4);
@@ -42,11 +55,17 @@ body {
     text-align: center;
   }
 
-
 }
+
 .half-column {
   @include span-columns(8);
 }
+
+.image-form-column {
+  @include span-columns(5);
+  @include shift(.5);
+}
+
 .container {
   @include outer-container;
   margin-top: .8em;
@@ -94,6 +113,12 @@ $sliding-menu-color-hover: #fff;
   z-index: 999999;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+
+  h3 {
+    font-color: white;
+
+
+  }
 
   li a {
     border-bottom: $sliding-menu-border;
@@ -605,6 +630,7 @@ $sliding-menu-color-hover: #fff;
   }
 }
 
+
 //Navigatioin
 
 header.navigation {
@@ -1105,5 +1131,63 @@ article.type-system-geometric {
 
   p.author {
     font-family: $sans-serif;
+  }
+}
+
+//Hover Title Animation
+
+
+.hover-tile-outer {
+  $hover-tile-height: 12.5em;
+
+  @include span-columns(6);
+  @include omega(2n);
+
+  background-position: bottom;
+  background-size: cover;
+  background-size: cover;
+  background-color: $base-accent-color;
+  border: 1px solid $base-border-color;
+  height: $hover-tile-height;
+  margin-bottom: $base-line-height;
+  cursor: pointer;
+
+  @include media($medium-screen) {
+
+  }
+
+  .hover-tile-container {
+    height: $hover-tile-height;
+    overflow: hidden;
+  }
+
+  .hover-tile-container:hover > .hover-tile {
+    @include transform(translate(0, -100%));
+  }
+
+  .hover-tile {
+    @include transition(all, .2s ease-in-out);
+    background:inherit;
+    color: white;
+    height:inherit;
+    padding: 1em 1.5em;
+  }
+
+  .hover-tile-visible {
+    color: transparentize(white, .3);
+    font-size: 2em;
+    font-weight: 200;
+    padding-top: 1.5em;
+    text-align: center;
+  }
+
+  .hover-tile-hidden {
+    background: transparentize(black, .5);
+    h4 {
+      margin-bottom: .5em;
+    }
+    p {
+      color: transparentize(white, .3);
+    }
   }
 }

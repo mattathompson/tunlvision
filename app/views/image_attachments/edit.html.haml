@@ -1,0 +1,33 @@
+.image-form-column
+  %br
+  %br
+  %br
+
+  %h1
+    =image_tag(@image_attachment.image.url)
+
+
+.image-form-column
+  %br
+  %h1 Edit Inspiration
+
+
+
+  =form_for([@project, @image_attachment]) do |f|
+
+    = f.file_field :image
+
+    = f.label :title
+    = f.text_field :title
+
+    = f.label :description
+    = f.text_area :description
+
+    = f.label :main, "Project Image?"
+    = f.check_box :main, {} , true, false
+
+    - array = [["none", nil]]
+    = f.label :deliverable_id
+    = f.select :deliverable_id, array + @project.deliverables.map{ |deliverable| [deliverable.title, deliverable.id] }
+
+    = f.submit "Update Image"

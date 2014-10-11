@@ -10,44 +10,66 @@
     %h4=@project.client_description
     %p
       =@project.description.truncate(200)
-      %a{:href => ""}
+      %a{:href => "#{project_info_path(id: @project)}"}
         Read more
         %span »
 
   .line-behind-text
     %h6 Project Inspiration
 
+
+  - @project.image_attachments.each do |attachment|
+
+    .hover-tile-outer{:style => "background-image: url(#{attachment.image.url})"}
+      %a{:href => "#{edit_project_image_attachment_path(@project, attachment)}"}
+
+        .hover-tile-container
+          .hover-tile.hover-tile-visible
+
+          .hover-tile.hover-tile-hidden
+            %h4= attachment.title
+            %p= attachment.description.truncate(200)
+
+
+  .full-width
+    .line-behind-text
+      %h6 Thought Board
+
+
   .grid-items
     %a.grid-item{:href => "javascript:void(0)"}
       %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
         %h1 Grid Item
         %p Lorem ipsum dolor sit amet, elit. Rem, illum.
-    %a.grid-item.grid-item-big.grid-item-image{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
-        %h1 Grid Item With an Image
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, illum.
-    %a.grid-item.grid-item-big{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3.png"}
-        %h1 Another Wide Item
-        %p Lorem ipsum consectetur dolor sit amet, consectetur adipisicing elit. Rem, illum.
-    %a.grid-item{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
-        %h1 Last Grid Item
-        %p Lorem ipsum dolor sit amet, elit. Rem, illum.
-    %a.grid-item{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
-        %h1 Last Grid Item
-        %p Lorem ipsum dolor sit amet, elit. Rem, illum.
-    %a.grid-item{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3.png"}
-        %h1 A Grid Item
-        %p Lorem ipsum dolor sit amet, elit. Rem, illum.
-    %a.grid-item{:href => "javascript:void(0)"}
-      %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
-        %h1 Item
-        %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+      %a.grid-item.grid-item-big.grid-item-image{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
+          %h1 Grid Item With an Image
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, illum.
+      %a.grid-item.grid-item-big{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3.png"}
+          %h1 Another Wide Item
+          %p Lorem ipsum consectetur dolor sit amet, consectetur adipisicing elit. Rem, illum.
+      %a.grid-item{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
+          %h1 Last Grid Item
+          %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+      %a.grid-item{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_2.png"}
+          %h1 Last Grid Item
+          %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+      %a.grid-item{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_3.png"}
+          %h1 A Grid Item
+          %p Lorem ipsum dolor sit amet, elit. Rem, illum.
+      %a.grid-item{:href => "javascript:void(0)"}
+        %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+          %h1 Item
+          %p Lorem ipsum dolor sit amet, elit. Rem, illum.
 
-  
+
+
+
+
   %nav.js-menu.sliding-menu-content
     %br
     %br

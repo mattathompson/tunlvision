@@ -7,4 +7,4 @@
     %small{:class => "pull-right"}= link_to "Delete ", project_deliverable_path(@deliverable.project_id, @deliverable), method: :delete
 
 
-  %h1=link_to "Add Inspiration!", new_project_deliverable_image_attachment_path(@deliverable.project_id, @deliverable)
+  %h1=link_to "Add Inspiration!", new_project_image_attachment_path(@deliverable.project_id, @deliverable)

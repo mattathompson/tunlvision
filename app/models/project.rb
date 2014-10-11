@@ -40,7 +40,17 @@ class Project < ActiveRecord::Base
     else
       all
     end
-	end
+  end
+
+  def set_main_as_false
+    image_attachments.each do |attachment|
+      attachment.main = false
+      attachment.save!
+    end
+
+  end
+
+
 
 
 

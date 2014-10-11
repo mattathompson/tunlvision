@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
   private
 
   def create_params
-    params.require(:project).permit(:title, :client, :description, :deadline)
+    params.require(:project).permit(:title, :client, :description, :deadline, :client, :client_website_url, :client_description, :client_email)
   end
 
   def find_project

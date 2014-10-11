@@ -27,11 +27,21 @@ class ImageAttachmentsController < ApplicationController
 
 
   def edit
-
+    @image_attachment = @project.image_attachments.find params[:id]
   end
 
 
   def update
+    @image_attachment = @project.image_attachments.find params[:id]
+    if params[:main] = true
+      @project.set_main_as_false
+    end
+
+    if @image_attachment.update! create_params
+      redirect_to @project
+    else
+      redirect_to :back
+    end
 
   end
 
@@ -50,7 +60,7 @@ class ImageAttachmentsController < ApplicationController
 
 
   def create_params
-    params.require(:image_attachment).permit(:image)
+    params.require(:image_attachment).permit(:image, :title, :description, :deliverable_id, :main)
   end
 
 
