@@ -19,6 +19,9 @@
               %li.nav-link
                 =link_to "New Project", new_project_path
             -if @project && !@project.title.nil?
+              %li.nav-link
+                %a{:href => "#{project_path(@project)}"}
+                  =@project.title
               %li.nav-link.more
                 %a{:href => "javascript:void(0)"} Project Options
                 %ul.submenu
@@ -33,7 +36,7 @@
                         %a{:href => "#{new_project_image_attachment_path(@project)}"} Image
                       %li
                         %a{:href => ""} Embed Video
-                
+
         .navigation-tools
           .search-bar
             .search-and-submit

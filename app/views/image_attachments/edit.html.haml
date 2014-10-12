@@ -30,4 +30,4 @@
     = f.label :deliverable_id
     = f.select :deliverable_id, array + @project.deliverables.map{ |deliverable| [deliverable.title, deliverable.id] }
 
-    = f.submit "Update Image"
+    = f.submit "Update Image", class: "submit"

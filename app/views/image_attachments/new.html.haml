@@ -15,4 +15,12 @@
     = f.label :description
     = f.text_area :description
 
-    = f.submit "Submit Image"
+    = f.label :main, "Project Image?"
+    = f.check_box :main, {} , true, false
+
+    - array = [["none", nil]]
+    = f.label :deliverable_id
+    = f.select :deliverable_id, array + @project.deliverables.map{ |deliverable| [deliverable.title, deliverable.id] }
+
+
+    = f.submit "Submit Image", class: "submit"
