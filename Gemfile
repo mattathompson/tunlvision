@@ -25,6 +25,8 @@ gem 'sinatra'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
 
 group :development do
   gem 'annotate'

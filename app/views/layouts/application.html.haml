@@ -5,6 +5,7 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+
   %body
     %header.navigation
       .navigation-wrapper
@@ -57,15 +58,11 @@
     .wrapper-for-content-outside-of-footer
 
       .container
-        .flash
-          - flash.each do |name, msg|
-            %div{ :class => "alert alert-#{flash_class name}" }
-              %a.close{ "data-dismiss" => "alert" } &times;
-              %div{ :id => "flash_#{flash_class name}" }
-                = msg
-      .container
-
+        - flash.each do |key, value|
+          %div{:class => "#{key}"}
+            %span= value
         = yield
+
 
 
 
