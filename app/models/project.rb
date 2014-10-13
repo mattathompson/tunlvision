@@ -44,6 +44,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def collaborate(email)
+    collaborator = User.find_by(email:  email)
+    self.collaborators << collaborator
+  end
+
+
   def set_main_as_false
     image_attachments.each do |attachment|
       attachment.main = false

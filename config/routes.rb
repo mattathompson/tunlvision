@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   match '/project/inspiration', to: 'projects#inspiration', via: 'get'
 
 
+
   resources :projects, except: [:index] do
+    resources :collaborators
     resources :deliverables
     resources :image_attachments
     resources :video_attachments

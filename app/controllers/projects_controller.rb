@@ -17,6 +17,10 @@ class ProjectsController < ApplicationController
 
   end
 
+  def share
+
+  end
+
   def create
     @project = current_user.projects.new create_params
     if @project.save!
