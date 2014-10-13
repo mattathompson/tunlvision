@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
   has_many :deliverables
   paginates_per 6
   has_many :image_attachments
+  has_many :relationships
+  has_many :collaborators, through: :relationships, source: :user
 
   include PgSearch
 	pg_search_scope :search, against: [:title, :description],
