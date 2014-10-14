@@ -1,10 +1,22 @@
-.project-wrapper-left
+.project-wrapper-left#first
   %button.js-menu-trigger.sliding-menu-button{:type => "button"}
     %img{:alt => "Menu Icon", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/menu.png"}
   %br
 
 
 .project-wrapper-right
+  .breadcrumb
+    %a{:href => "#two"}
+      %i.fa.fa-eye Inspiration
+    %a{:href => "#three"}
+      %i.fa.fa-comments Thought Board
+    %a{:href => "#four"}
+      %i.fa.fa-play-circle Videos
+
+
+
+
+
   .intro-text
     %h2=@project.client
     %h4=@project.client_description
@@ -14,53 +26,55 @@
         Read more
         %span »
 
-  .line-behind-text
-    %h6 Project Inspiration
-
-  - @project.image_attachments.each do |attachment|
-
-    .hover-tile-outer.modal{:style => "background-image: url(#{attachment.image.url})"}
-      %label{:for => "modal-#{attachment.id}"}
-        .hover-tile-container
-          .hover-tile.hover-tile-visible
-
-          .hover-tile.hover-tile-hidden
-            %h4= attachment.title
-            %p= attachment.description.truncate(200)
-      %input.modal-state{:type => "checkbox", :id => "modal-#{attachment.id}"}/
-      .modal-window{:style => "a{color: white;}"}
-        %h3
-          =link_to "View", edit_project_image_attachment_path(@project, attachment),:style => "color: white;"
-        .modal-inner
-          = image_tag attachment.image.url
-          %label.modal-close{:for => "modal-#{attachment.id}"}
-
-
--if !@project.notes.empty?
-
-  .full-width
+  .full-width#two
     .line-behind-text
-      %h6 Thought Board
-    .grid-items-lines
-      - @project.notes.each do |note|
-        %a.grid-item.modal{:href => "javascript:void(0)"}
-          %label{:for => "modal-note-#{note.id}"}
-            %i.fa.fa-file-text-o.fa-2x
-            %br
-            %br
-            %h1= note.title
-            %p= note.content.truncate(30)
-          %input.modal-state{:type => "checkbox", :id => "modal-note-#{note.id}"}/
-          .modal-window{:style => "a{color: white;}"}
-            .modal-inner
-              %h1= note.title
-              %p= note.content
+      %h6 Project Inspiration
 
-              %label.modal-close{:for => "modal-note-#{note.id}"}
-  %br
-  %br
-  %br
-  %br
+    .sample
+      - @project.image_attachments.each do |attachment|
+
+        .hover-tile-outer.modal{:style => "background-image: url(#{attachment.image.url})"}
+          %label{:for => "modal-#{attachment.id}"}
+            .hover-tile-container
+              .hover-tile.hover-tile-visible
+
+              .hover-tile.hover-tile-hidden
+                %h4= attachment.title
+                %p= attachment.description.truncate(200)
+          %input.modal-state{:type => "checkbox", :id => "modal-#{attachment.id}"}/
+          .modal-window{:style => "a{color: white;}"}
+            %h3
+              =link_to "View", edit_project_image_attachment_path(@project, attachment),:style => "color: white;"
+            .modal-inner
+              = image_tag attachment.image.url
+              %label.modal-close{:for => "modal-#{attachment.id}"}
+
+
+  -if !@project.notes.empty?
+
+    .full-width#three
+      .line-behind-text
+        %h6 Thought Board
+      .grid-items-lines
+        - @project.notes.each do |note|
+          %a.grid-item.modal{:href => "javascript:void(0)"}
+            %label{:for => "modal-note-#{note.id}"}
+              %i.fa.fa-file-text-o.fa-2x
+              %br
+              %br
+              %h1= note.title
+              %p= note.content.truncate(30)
+            %input.modal-state{:type => "checkbox", :id => "modal-note-#{note.id}"}/
+            .modal-window{:style => "a{color: white;}"}
+              .modal-inner
+                %h1= note.title
+                %p= note.content
+
+                %label.modal-close{:for => "modal-note-#{note.id}"}
+    %br
+    %br
+    %br
+    %br
 
 
 
