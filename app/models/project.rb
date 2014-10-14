@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :deliverables
   paginates_per 6
   has_many :image_attachments
+  has_many :notes
   has_many :relationships
   has_many :collaborators, through: :relationships, source: :user
 

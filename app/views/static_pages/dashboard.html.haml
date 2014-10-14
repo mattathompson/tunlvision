@@ -25,33 +25,34 @@
             %li
               = project.deliverables.count
               %span Objectives
-.full-width
-  .line-behind-text
-    %h6 Collaborated Projects
+-if !@collaborations.empty?
+  .full-width
+    .line-behind-text
+      %h6 Collaborated Projects
 
-  .cards
-    -@collaborations.each do |project|
-      .card
-        .card-image
-          -if project.has_main_image?
-            = image_tag project.main_image
-          -else
-            %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}
-        .card-header
-          =link_to project.title, project_path(project)
-        .card-copy
-          = project.description.truncate(150)
-        .card-stats
-          %ul
-            %li
-              = project.deadline.strftime("%Y-%m-%d")
-              %span Deadline
-            %li
-              -if project.active?
-                Active
-              -else
-                Finished
-              %span Status
-            %li
-              = project.deliverables.count
-              %span Objectives
+    .cards
+      -@collaborations.each do |project|
+        .card
+          .card-image
+            -if project.has_main_image?
+              = image_tag project.main_image
+            -else
+              %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}
+          .card-header
+            =link_to project.title, project_path(project)
+          .card-copy
+            = project.description.truncate(150)
+          .card-stats
+            %ul
+              %li
+                = project.deadline.strftime("%Y-%m-%d")
+                %span Deadline
+              %li
+                -if project.active?
+                  Active
+                -else
+                  Finished
+                %span Status
+              %li
+                = project.deliverables.count
+                %span Objectives

@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   match '/project/inspiration', to: 'projects#inspiration', via: 'get'
 
 
-
   resources :projects, except: [:index] do
+    member do
+      get 'deliverables_plan'
+    end
     resources :collaborators
     resources :deliverables
     resources :image_attachments

@@ -1,0 +1,41 @@
+
+
+%br
+%br
+%br
+
+.form-column
+  %h2
+    Create Deliverables
+    %a.add-deliverable{:href => "#"}
+      (+)
+  %br
+  %br
+
+  =form_tag project_deliverables_path(@project), method: :post do
+
+    =label_tag :title
+    =text_field_tag :title
+
+    =label_tag :timebox
+    =date_field_tag :timebox
+
+    =submit_tag "Add Deliverables"
+
+
+:javascript
+  $( document ).ready(function() {
+    $('.add-deliverable').click(function(){
+      event.preventDefault();
+
+      $('.form-column').append( "<form accept-charset='UTF-8' action='/projects/41/deliverables' method='post'>
+            <label for='title'>Title</label>
+            <input id='title' name='title' type='text'>
+            <label for='timebox'>Timebox</label>
+            <input id='timebox' name='timebox' type='date'>
+            <input name='commit' type='submit' value='Add Deliverables'>
+          </form>" );
+    });
+
+
+  });

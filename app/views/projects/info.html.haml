@@ -16,3 +16,9 @@
     %strong= @project.title
   %p
     = @project.description
+  %p
+    %strong Email:
+    %a{:href => "mailto:#{@project.client_email}"}= @project.client_email
+  %p
+    %strong Website:
+    %a{:href => "http://#{@project.client_website_url}"}= @project.client_website_url

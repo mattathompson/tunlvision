@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name
   has_many :projects
+  has_many :notes 
   has_many :relationships
   has_many :collaborations, through: :relationships, source: :project
 

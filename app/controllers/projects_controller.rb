@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :info, :inspiration, :destroy, :edit, :update]
+  before_action :find_project, only: [:show, :info, :inspiration, :destroy, :edit, :update, :deliverables_plan]
 
   def show
 
@@ -9,13 +9,6 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new
   end
 
-  def info
-
-  end
-
-  def inspiration
-
-  end
 
   def share
 
@@ -53,6 +46,18 @@ class ProjectsController < ApplicationController
 
   end
 
+  def info
+
+  end
+
+  def inspiration
+
+  end
+
+  def deliverables_planj
+
+  end
+
   private
 
   def create_params
@@ -60,7 +65,9 @@ class ProjectsController < ApplicationController
   end
 
   def find_project
-    @project = current_user.projects.find params[:id]
+    @project = current_user.collaborations.find(params[:id])
+    rescue
+    @project = current_user.projects.find(params[:id])
   end
 
 end
