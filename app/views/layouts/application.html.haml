@@ -5,14 +5,14 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-    %link{:href => "maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
+    %link{:href => "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}/
 
 
   %body
     %header.navigation
       .navigation-wrapper
         %a.logo{:href => "#{root_path}"}
-          %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+          %i.fa.fa-pied-piper-alt.fa-3x
         %a#js-mobile-menu.navigation-menu-button{:href => ""} MENU
         .nav
           %ul#navigation-menu
@@ -56,10 +56,6 @@
             = link_to "Sign In", new_user_session_path, class: "sign-up"
 
 
-
-
-
-
     .wrapper-for-content-outside-of-footer
 
       .container
@@ -75,14 +71,14 @@
 
 %footer.footer-2
   .footer-logo
-    %img{:alt => "Logo image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
+    %i.fa.fa-pied-piper-alt.fa-2x
   %ul
     %li
-      %a{:href => "javascript:void(0)"} About
+      %a{:href => "#{about_path}"} About
     %li
-      %a{:href => "javascript:void(0)"} Contact
+      %a{:href => "#{contact_path}"} Contact
     %li
-      %a{:href => "javascript:void(0)"} Products
+      %a{:href => "#{root_path}"} Projects
   .footer-secondary-links
     %ul
       %li

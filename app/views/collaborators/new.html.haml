@@ -1,6 +1,15 @@
-%h3 Send Collaboration Request
+.form-column
+  %br
+  %br
+  %h1 Send Collaboration Request
 
+  %br
+  %i Use Caution... When you send a collaboration request to another user you are alowing them to make changes to your project and have access to all content. God Speed.
+  %br
+  %br
 
-=form_tag project_collaborators_path(@project), method: :post do
-  =text_field_tag :email, nil, placeholder: "Enter Email"
-  =submit_tag "Send Request"
+  .small-column
+    =form_tag project_collaborators_path(@project), method: :post do
+      =label_tag "User Email"
+      =text_field_tag :email, nil, placeholder: "Enter Email"
+      =submit_tag "Send Request"

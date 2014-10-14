@@ -4,6 +4,12 @@ body {
 
 }
 
+.logo {
+  color: white;
+  padding-top: .1em;
+
+}
+
 
 .danger {
   @include button(red);
@@ -28,8 +34,8 @@ body {
 }
 
 .form-column {
-  @include span-columns(6);
-  @include shift(3);
+  @include span-columns(8);
+  @include shift(2);
 
   h1 {
     text-align: center;
@@ -39,6 +45,11 @@ body {
     @include span-columns(4);
     margin-right: 100em;
   }
+}
+
+.small-column{
+
+  @include span-columns(6);
 }
 
 
@@ -65,7 +76,8 @@ body {
 }
 
 .half-column {
-  @include span-columns(8);
+  @include span-columns(10);
+  @include shift(1);
 }
 
 .image-form-column {
@@ -122,7 +134,8 @@ $sliding-menu-color-hover: #fff;
   -webkit-overflow-scrolling: touch;
 
   h3 {
-    font-color: white;
+    color: white;
+    text-align: center;
 
 
   }
@@ -1464,6 +1477,7 @@ article.type-system-geometric {
   $grid-item-big-columns: 8;
   $grid-item-color: $base-font-color;
   $grid-item-height: 14em;
+  padding-bottom: 5em;
 
   @include clearfix;
   position: relative;

@@ -17,8 +17,6 @@
   .line-behind-text
     %h6 Project Inspiration
 
-
-
   - @project.image_attachments.each do |attachment|
 
     .hover-tile-outer.modal{:style => "background-image: url(#{attachment.image.url})"}
@@ -45,15 +43,24 @@
       %h6 Thought Board
     .grid-items-lines
       - @project.notes.each do |note|
-        %a.grid-item{:href => "javascript:void(0)"}
-          %img{:alt => "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1_dark.png"}
-            %h1 Grid Item
-            %p Lorem ipsum dolor sit amet, elit. Rem, illum.
-      .right-cover
-      .bottom-cover
+        %a.grid-item.modal{:href => "javascript:void(0)"}
+          %label{:for => "modal-note-#{note.id}"}
+            %i.fa.fa-file-text-o.fa-2x
+            %br
+            %br
+            %h1= note.title
+            %p= note.content.truncate(30)
+          %input.modal-state{:type => "checkbox", :id => "modal-note-#{note.id}"}/
+          .modal-window{:style => "a{color: white;}"}
+            .modal-inner
+              %h1= note.title
+              %p= note.content
 
-%br
-%br
+              %label.modal-close{:for => "modal-note-#{note.id}"}
+  %br
+  %br
+  %br
+  %br
 
 
 

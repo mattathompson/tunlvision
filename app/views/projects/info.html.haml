@@ -4,21 +4,22 @@
 %br
 %br
 %br
-%article.type-system-geometric
-  %p.type= "Project Deadline:  #{@project.deadline.strftime("%Y-%m-%d")}"
-  %a.float-right{:href => "#{edit_project_path(@project)}"}
-    %button Edit Project
-  %h1= @project.client
-  %h2
-    =@project.client_description
+.half-column
+  %article.type-system-geometric
+    %p.type= "Project Deadline:  #{@project.deadline.strftime("%Y-%m-%d")}"
+    %a.float-right{:href => "#{edit_project_path(@project)}"}
+      %button Edit Project
+    %h1= @project.client
+    %h2
+      =@project.client_description
 
-  %h2
-    %strong= @project.title
-  %p
-    = @project.description
-  %p
-    %strong Email:
-    %a{:href => "mailto:#{@project.client_email}"}= @project.client_email
-  %p
-    %strong Website:
-    %a{:href => "http://#{@project.client_website_url}"}= @project.client_website_url
+    %h2
+      %strong= @project.title
+    %p
+      = @project.description
+    %p
+      %strong Email:
+      %a{:href => "mailto:#{@project.client_email}"}= @project.client_email
+    %p
+      %strong Website:
+      %a{:href => "http://#{@project.client_website_url}"}= @project.client_website_url
