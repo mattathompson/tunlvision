@@ -6,12 +6,17 @@
 
 .project-wrapper-right
   .breadcrumb
-    %a{:href => "#two"}
-      %i.fa.fa-eye Inspiration
-    %a{:href => "#three"}
-      %i.fa.fa-comments Thought Board
-    %a{:href => "#four"}
-      %i.fa.fa-play-circle Videos
+    -if !@project.image_attachments.empty?
+      %a{:href => "#two"}
+        %i.fa.fa-eye Inspiration
+    -else
+      = link_to "Upload Images!", new_project_image_attachment_path(@project)
+    -if !@project.notes.empty?
+      %a{:href => "#three"}
+        %i.fa.fa-comments Thought Board
+    -else
+      = link_to "Add your thoughts to the Board!", new_project_note_path(@project)
+
 
 
 
@@ -26,28 +31,30 @@
         Read more
         %span »
 
-  .full-width#two
-    .line-behind-text
-      %h6 Project Inspiration
 
-    .sample
-      - @project.image_attachments.each do |attachment|
+  -if !@project.image_attachments.empty?
+    .full-width#two
+      .line-behind-text
+        %h6 Project Inspiration
 
-        .hover-tile-outer.modal{:style => "background-image: url(#{attachment.image.url})"}
-          %label{:for => "modal-#{attachment.id}"}
-            .hover-tile-container
-              .hover-tile.hover-tile-visible
+      .sample
+        - @project.image_attachments.each do |attachment|
 
-              .hover-tile.hover-tile-hidden
-                %h4= attachment.title
-                %p= attachment.description.truncate(200)
-          %input.modal-state{:type => "checkbox", :id => "modal-#{attachment.id}"}/
-          .modal-window{:style => "a{color: white;}"}
-            %h3
-              =link_to "View", edit_project_image_attachment_path(@project, attachment),:style => "color: white;"
-            .modal-inner
-              = image_tag attachment.image.url
-              %label.modal-close{:for => "modal-#{attachment.id}"}
+          .hover-tile-outer.modal{:style => "background-image: url(#{attachment.image.url})"}
+            %label{:for => "modal-#{attachment.id}"}
+              .hover-tile-container
+                .hover-tile.hover-tile-visible
+
+                .hover-tile.hover-tile-hidden
+                  %h4= attachment.title
+                  %p= attachment.description.truncate(200)
+            %input.modal-state{:type => "checkbox", :id => "modal-#{attachment.id}"}/
+            .modal-window{:style => "a{color: white;}"}
+              %h3
+                =link_to "View", edit_project_image_attachment_path(@project, attachment),:style => "color: white;"
+              .modal-inner
+                = image_tag attachment.image.url
+                %label.modal-close{:for => "modal-#{attachment.id}"}
 
 
   -if !@project.notes.empty?

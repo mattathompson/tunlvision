@@ -27,6 +27,13 @@ gem 'bitters'
 gem 'omniauth-google-oauth2'
 gem 'omniauth'
 
+group :production do
+  gem 'unicorn'
+  gem 'rails_12factor'
+
+end
+
+
 group :development do
   gem 'annotate'
   gem 'better_errors'
