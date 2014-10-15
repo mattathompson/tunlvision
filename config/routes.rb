@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     end
     resources :collaborators
     resources :notes
-    resources :deliverables
+    resources :videos
+    resources :deliverables do
+      resource :proof
+    end
+
     resources :image_attachments
     resources :video_attachments
   end

@@ -16,6 +16,11 @@
         %i.fa.fa-comments Thought Board
     -else
       = link_to "Add your thoughts to the Board!", new_project_note_path(@project)
+    -if !@project.videos.empty?
+      %a{:href => "#four"}
+        %i.fa.fa-youtube  Video Content
+    -else
+      = link_to "Post Video!", new_project_note_path(@project)
 
 
 
@@ -78,20 +83,35 @@
                 %p= note.content
 
                 %label.modal-close{:for => "modal-note-#{note.id}"}
-    %br
-    %br
-    %br
-    %br
+
+  -if !@project.videos.empty?
+    .full-width#four
+      .line-behind-text
+        %h6 Video Content
+      -@project.videos.each do |video|
+        .video
+          %h2
+            =video.title
+            %a{:href => "#{project_video_path(@project, video)}", method: "delete",:style => "float: right; color: #d9534f;"}
+              %i.fa.fa-trash
+            %a{:href => "#{edit_project_video_path(@project, video)}", :style => "float: right; margin-right: .25em;"}
+              %i.fa.fa-edit
+
+
+          .video-wrapper
+            %iframe{:allowfullscreen => "", :width => "560", :height => "315", :frameborder => "0", :src => "#{video.url}"}
+        %br
+        %br
 
 
 
-  %nav.js-menu.sliding-menu-content
-    %br
-    %br
-    %h3 Objectives
-    %br
-    %ul
-      - @project.deliverables.each do |deliverable|
-        %li
-          %a{:href => "#{project_deliverable_path(@project, deliverable)}"}= deliverable.title
+%nav.js-menu.sliding-menu-content
+  %br
+  %br
+  %h3 Objectives
+  %br
+  %ul
+    - @project.deliverables.each do |deliverable|
+      %li
+        %a{:href => "#{project_deliverable_path(@project, deliverable)}"}= deliverable.title
 .js-menu-screen.menu-screen

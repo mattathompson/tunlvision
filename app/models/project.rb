@@ -2,12 +2,13 @@ class Project < ActiveRecord::Base
   validates_presence_of :title, :deadline, :description, :client, :user_id
   belongs_to :user
   has_many :deliverables
-  paginates_per 6
   has_many :image_attachments
   has_many :notes
   has_many :videos
   has_many :relationships
   has_many :collaborators, through: :relationships, source: :user
+  paginates_per 6
+
 
   include PgSearch
 	pg_search_scope :search, against: [:title, :description],

@@ -1,10 +1,29 @@
-.page-header
-  %h1
-    Deliverable
-    %small= @deliverable.title
-    %small{:class => "pull-right"}= link_to " Edit", edit_project_deliverable_path(@deliverable.project_id, @deliverable)
-    %small{:class => "pull-right"}= "|"
-    %small{:class => "pull-right"}= link_to "Delete ", project_deliverable_path(@deliverable.project_id, @deliverable), method: :delete
+%head
+  %link{:href => "http://fonts.googleapis.com/css?family=Questrial", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Sanchez:400italic,400", :rel => "stylesheet", :type => "text/css"}
 
+.full-width
+  %br
+  %a{:href => ""}
+    %button.proof{:class => "pull-right"} Complete Objective
 
-  %h1=link_to "Add Inspiration!", new_project_image_attachment_path(@deliverable.project_id, @deliverable)
+  %br
+  %article.type-system-geometric
+    %h1
+      =@deliverable.title
+      %h2.type
+        ="#{(@deliverable.timebox - Date.today).numerator} days left from Goal"
+
+    %p= simple_format(@deliverable.description)
+
+    %br
+    %a{:href => "#{project_deliverable_path(@deliverable.project_id, @deliverable)}", :method => "delete"}
+      %button.danger{:class => "pull-left"} Delete
+    %a{:href => "#{edit_project_deliverable_path(@deliverable.project_id, @deliverable)}"}
+      %button{:class => "pull-left"} Edit
+
+  %hr
+
+  -@deliverable.image_attachments.each do |attachment|
+    .split-column
+      =image_tag attachment.image.url

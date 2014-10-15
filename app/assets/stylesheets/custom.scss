@@ -10,10 +10,20 @@ body {
 
 }
 
+.split-column{
+  @include span-columns(6);
+  @include shift(0);
+}
+
 
 .danger {
   @include button(red);
 }
+
+.proof {
+  @include button(green);
+}
+
 
 .full-width {
   @include span-columns(12);
@@ -23,7 +33,7 @@ body {
 
 .inspiration-column {
 
-  @include span-columns(6);
+  @include span-columns(12);
   @include omega(2n);
 
 }
@@ -1641,4 +1651,28 @@ article.type-system-geometric {
       padding: 0 $breadcrumb-height/2 0 $breadcrumb-height/1.5;
     }
   }
+}
+
+//Iframe
+
+.video {
+  margin: auto;
+
+  @include media($large-screen) {
+    width: 75%;
+  }
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; // For ratio 16:9. 75% if ratio is 4:3
+  height: 0;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
