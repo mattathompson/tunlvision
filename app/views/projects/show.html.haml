@@ -5,6 +5,8 @@
 
 
 .project-wrapper-right
+  %a{:href => "javascript:onApiLoad()"}
+    %button{:style => "float: right;"} Project Drive
   .breadcrumb
     -if !@project.image_attachments.empty?
       %a{:href => "#two"}

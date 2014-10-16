@@ -47,7 +47,9 @@ private
   end
 
   def find_project
-    @project = current_user.projects.find params[:project_id]
+    @project = current_user.collaborations.find(params[:project_id])
+    rescue
+    @project = current_user.projects.find(params[:project_id])
   end
 
 
