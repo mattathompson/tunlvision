@@ -1,8 +1,8 @@
 %head
   %link{:href => "http://fonts.googleapis.com/css?family=Questrial", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "http://fonts.googleapis.com/css?family=Sanchez:400italic,400", :rel => "stylesheet", :type => "text/css"}
-
 .full-width
+  .smaller-column
   %br
   %a{:href => ""}
     %button.proof{:class => "pull-right"} Complete Objective
@@ -21,9 +21,3 @@
       %button.danger{:class => "pull-left"} Delete
     %a{:href => "#{edit_project_deliverable_path(@deliverable.project_id, @deliverable)}"}
       %button{:class => "pull-left"} Edit
-
-  %hr
-
-  -@deliverable.image_attachments.each do |attachment|
-    .split-column
-      =image_tag attachment.image.url

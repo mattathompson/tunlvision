@@ -2,21 +2,24 @@
   %link{:href => "http://fonts.googleapis.com/css?family=Questrial", :rel => "stylesheet", :type => "text/css"}
     %link{:href => "http://fonts.googleapis.com/css?family=Sanchez:400italic,400", :rel => "stylesheet", :type => "text/css"}
 %br
-%br
-%br
 .half-column
   %article.type-system-geometric
     %p.type= "Project Deadline:  #{@project.deadline.strftime("%Y-%m-%d")}"
     %a.float-right{:href => "#{edit_project_path(@project)}"}
       %button Edit Project
-    %h1= @project.client
-    %h2
-      =@project.client_description
 
-    %h2
+    %h1
       %strong= @project.title
     %p
       = @project.description
+
+
+
+    %h4= @project.client
+    %br
+    %p
+      =@project.client_description
+
     %p
       %strong Email:
       %a{:href => "mailto:#{@project.client_email}"}= @project.client_email

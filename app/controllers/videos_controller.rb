@@ -30,20 +30,25 @@ class VideosController < ApplicationController
 
 
   def edit
-
+    @video = @project.videos.find params[:id]
   end
 
 
   def update
-
+    @video = @project.videos.find params[:id]
+    @video.update_attributes create_params
+    if @video.save!
+      redirect_to @project, :flash => {:success => "You have successfully updated the video!"}
+    else
+      redirect_to :back
+    end
   end
 
 
   def destroy
-    binding.pry
     @video = @project.videos.find params[:id]
     if @video.destroy!
-      redirect_to @project, :flash => {:success => "Video was successfully removed!"}
+      redirect_to @project, :flash => {:success => "The video was successfully removed!"}
     else
       redirect_to :back, :flash => {:failure => "Something went wrong."}
     end
@@ -63,6 +68,7 @@ class VideosController < ApplicationController
   def create_params
     params.require(:video).permit(:title, :url, :description)
   end
+
 
 
 end

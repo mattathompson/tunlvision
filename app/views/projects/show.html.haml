@@ -6,7 +6,7 @@
 
 .project-wrapper-right
   %a{:href => "javascript:onApiLoad()"}
-    %button{:style => "float: right;"} Project Drive
+    =image_tag "drive.ico", :style => "width: 4%; height: 4%; float: right;"
   .breadcrumb
     -if !@project.image_attachments.empty?
       %a{:href => "#two"}
@@ -22,7 +22,7 @@
       %a{:href => "#four"}
         %i.fa.fa-youtube  Video Content
     -else
-      = link_to "Post Video!", new_project_note_path(@project)
+      = link_to "Post Video!", new_project_video_path(@project)
 
 
 
@@ -30,10 +30,10 @@
 
 
   .intro-text
-    %h2=@project.client
-    %h4=@project.client_description
+    %h2=strip_tags(@project.client)
+    %h4=strip_tags(@project.client_description)
     %p
-      =@project.description.truncate(200)
+      =strip_tags(@project.description.truncate(200))
       %a{:href => "#{project_info_path(id: @project)}"}
         Read more
         %span »
@@ -83,8 +83,16 @@
               .modal-inner
                 %h1= note.title
                 %p= note.content
-
                 %label.modal-close{:for => "modal-note-#{note.id}"}
+
+        %a.grid-item{:href => "#{new_project_note_path(@project)}"}
+          %i.fa.fa-plus-square.fa-4x
+          %br
+          %br
+          %h1 Create a Note
+
+
+
 
   -if !@project.videos.empty?
     .full-width#four

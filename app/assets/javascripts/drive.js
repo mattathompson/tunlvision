@@ -20,8 +20,8 @@ function handleAuthentication(result) {
 function setupPicker() {
   var picker = new google.picker.PickerBuilder().
     enableFeature(google.picker.Feature.MULTISELECT_ENABLED).
-    addView(new google.picker.DocsView().setParent('0B1RaPQwOZ6RDbnpBX1BsSHlOMVU')).
-    addView(new google.picker.DocsUploadView().setParent('0B1RaPQwOZ6RDbnpBX1BsSHlOMVU'))
+    addView(new google.picker.DocsView().setParent('0B1RaPQwOZ6RDTHBrV2hMNWpXdU0')).
+    addView(new google.picker.DocsUploadView().setParent('0B1RaPQwOZ6RDTHBrV2hMNWpXdU0'))
 
     .setOAuthToken(accessToken)
     .setDeveloperKey(developerKey)

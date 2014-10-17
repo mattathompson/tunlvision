@@ -1,3 +1,5 @@
+
+
 body {
     margin: 0px;
 
@@ -38,8 +40,12 @@ body {
 
 }
 
+.smaller-column {
+  @include span-columns(10);
+  @include span-columns(1);
+}
 
-.float-right{
+.float-right {
   @include shift(10);
 }
 

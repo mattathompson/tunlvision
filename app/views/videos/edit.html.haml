@@ -1,0 +1,16 @@
+.form-column
+  %h1 Edit Video
+
+  =form_for([@project, @video]) do |f|
+
+    =f.label :title
+    =f.text_field :title
+
+    =f.label "Short Description"
+    =f.text_area :description, rows: 5
+
+    =f.label "Embed Video Url"
+    =f.text_field :url
+
+    =f.submit "Add Video!"
+`

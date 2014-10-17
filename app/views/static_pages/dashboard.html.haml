@@ -1,5 +1,3 @@
-#result
-  
 - if !@projects.empty?
   .cards
     -@projects.each do |project|
@@ -12,7 +10,7 @@
         .card-header
           =link_to project.title, project_path(project)
         .card-copy
-          = project.description.truncate(150)
+          = strip_tags(project.description.truncate(125))
         .card-stats
           %ul
             %li
@@ -43,7 +41,7 @@
           .card-header
             =link_to project.title, project_path(project)
           .card-copy
-            = project.description.truncate(150)
+            = strip_tags(project.description.truncate(125))
           .card-stats
             %ul
               %li

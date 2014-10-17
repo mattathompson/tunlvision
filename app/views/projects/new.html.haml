@@ -1,23 +1,42 @@
 .form-column
   %br
   %br
-  %h1 Create Project
+  %h1 Create new Project
   %br
   %br
-  = form_for(@project) do |f|
 
+  = form_for(@project) do |f|
     = f.label :title
     = f.text_field :title
 
-    = f.label :client
-    = f.text_field :client
-
     = f.label :description
-    = f.text_area :description, rows: "6"
+    = f.text_area :description, rows: "8"
+
+
     .date-field
       = f.label :deadline
       = f.date_field :deadline, :order => [:month, :day, :year]
 
+
+    .line-behind-text
+      %h6 Client Information
+
+    = f.label :client
+    = f.text_field :client
+
+    = f.label :client_description
+    = f.text_area :client_description, rows: "4"
+
+    = f.label :client_website_url
+    = f.text_field :client_website_url
+
+    = f.label :client_email
+    = f.text_field :client_email
+
+
     = f.submit "Create Project"
     %br
     %br
+
+:javascript
+  bkLib.onDomLoaded(nicEditors.allTextAreas);

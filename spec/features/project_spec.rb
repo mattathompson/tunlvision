@@ -12,23 +12,25 @@ feature 'working with projects' do
       visit new_project_path
     end
 
-    focus "can create projects" do
+    it "can create projects" do
+      visit new_project_path
+
       project = build :project
-      %w(Title Client Description).each do |value|
+      %w(Title Client Description Deadline).each do |value|
         fill_in(value, :with => project[:"#{value.downcase}"])
       end
       click_button('Create Project')
     end
   end
 
-  focus "Edit Project" do
+  context "Edit Project" do
     before :each do
       project1 = build :project
       @user.projects << project1
-      visit project_path(project1)
+      visit info_path(project1)
     end
 
-    it "allows you to edit an existing project" do
+    focus "allows you to edit an existing project" do
       click_link('Edit')
       project2 = build :project
 

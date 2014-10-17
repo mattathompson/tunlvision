@@ -29,7 +29,7 @@ feature 'Deliverables' do
 
   context "can be modified" do
 
-    focus "modifying a existing deliverable" do
+    it "modifying a existing deliverable" do
       @deliverable = create :deliverable
       @project.deliverables << @deliverable
       @modified_deliverable = build :deliverable

@@ -7,16 +7,17 @@
     %br
 
     = form_for([@project, @deliverable]) do |f|
-      .form-group
-        = f.label :title
-        = f.text_field :title, class: "form-control"
-      .form-group
-        = f.label :description
-        = f.text_area :description, rows: "6", class: "form-control"
-      .form-group
-        = f.label :timebox
-        = f.date_field :timebox, :order => [:month, :day, :year], class: "form-control"
+      = f.label :title
+      = f.text_field :title, class: "form-control"
+
+      = f.label :description
+      = f.text_area :description, rows: "6", class: "form-control"
+
+      = f.label :timebox
+      = f.date_field :timebox, :order => [:month, :day, :year], class: "form-control"
 
       = f.submit "Update Deliverable", class: "btn btn-default"
       %br
       %br
+:javascript
+  bkLib.onDomLoaded(nicEditors.allTextAreas);
