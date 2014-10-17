@@ -42,7 +42,7 @@ body {
 
 .smaller-column {
   @include span-columns(10);
-  @include span-columns(1);
+  @include shift(1);
 }
 
 .float-right {
