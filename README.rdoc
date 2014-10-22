@@ -1,28 +1,22 @@
-== README
+== Tunlvision
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application was created in two weeks for a final project demo at The Iron Yard.
 
-Things you may want to cover:
+Some of the features included are:
 
-* Ruby version
+* Test Driven Development
 
-* System dependencies
+* Google Drive Integration
 
-* Configuration
+* Bourbon
 
-* Database creation
+* Jquery
 
-* Database initialization
+* Authentication with an exteral provider like Google
 
-* How to run the test suite
+* Image Upload with Amazon AWS
 
-* Services (job queues, cache servers, search engines, etc.)
+* User Authentication with Devise
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
